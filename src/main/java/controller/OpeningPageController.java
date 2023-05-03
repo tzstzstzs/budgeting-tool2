@@ -45,6 +45,9 @@ public class OpeningPageController {
             //Budgeting budget = null;
             controller.setModel(budgetToOpen); // pass the budget to the controller
             controller.nameOfBudgetOwner.setText(budgetToOpen.getName() + "'s budget");
+            controller.remainingAmount.setText(String.valueOf(budgetToOpen.getRemainingAmount()));
+            controller.totalIncome.setText(String.valueOf(budgetToOpen.getTotalIncomes()));
+            controller.totalExpense.setText(String.valueOf(budgetToOpen.getTotalExpenses()));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -71,16 +74,6 @@ public class OpeningPageController {
         if (selectedFile != null) {
             Budgeting model = Budgeting.loadFromJsonFile(selectedFile);
             switchToBudgetingPage(actionEvent, model);
-
-/*            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/budgeting.fxml"));
-            Parent root = loader.load();
-            BudgetingController controller = loader.getController();
-            controller.setModel(model);
-            controller.getNameOfBudgetOwner().setText(model.getName());
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();*/
         }
     }
 }

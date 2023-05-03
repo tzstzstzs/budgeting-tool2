@@ -37,7 +37,13 @@ public class BudgetingController {
     private DatePicker expenseDate;
 
     @FXML
-    private Label remainingAmount;
+    public Label totalIncome;
+
+    @FXML
+    public Label totalExpense;
+
+    @FXML
+    public Label remainingAmount;
 
     @FXML
     public Label nameOfBudgetOwner;
@@ -57,13 +63,13 @@ public class BudgetingController {
     public void setModel(Budgeting model) {
         this.model = model;
     }
-/*
+
     public void loadBudgetFromJsonFile() throws IOException {
         File file = new File("budget2.json");
         model = Budgeting.loadFromJsonFile(file);
-            nameOfBudgetOwner.setText(model.getName());
+        nameOfBudgetOwner.setText(model.getName());
     }
-*/
+
 
     public void saveBudgetToJsonFile(){
         File file1 = new File("budget3.json");
@@ -89,5 +95,8 @@ public class BudgetingController {
             System.out.println("Adding expense");
         }
         System.out.println(model);
+        remainingAmount.setText(String.valueOf(model.getRemainingAmount()));
+        totalIncome.setText(String.valueOf(model.getTotalIncomes()));
+        totalExpense.setText(String.valueOf(model.getTotalExpenses()));
     }
 }
