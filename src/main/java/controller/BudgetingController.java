@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,6 +14,8 @@ import model.Income;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class BudgetingController {
     @FXML
@@ -53,11 +57,13 @@ public class BudgetingController {
     public void setModel(Budgeting model) {
         this.model = model;
     }
+/*
     public void loadBudgetFromJsonFile() throws IOException {
         File file = new File("budget2.json");
         model = Budgeting.loadFromJsonFile(file);
-        nameOfBudgetOwner.setText(model.getName());
+            nameOfBudgetOwner.setText(model.getName());
     }
+*/
 
     public void saveBudgetToJsonFile(){
         File file1 = new File("budget3.json");
