@@ -1,3 +1,4 @@
+import javafx.application.Application;
 import model.Budgeting;
 import model.Expense;
 import model.Income;
@@ -8,7 +9,10 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Income inc1 = new Income("salary", 2000, new Date());
+
+        Application.launch(BudgetingApplication.class, args);
+
+/*        Income inc1 = new Income("salary", 2000, new Date());
         Income inc2 = new Income("apartment letting", 500, new Date());
 
         Expense expns1 = new Expense("bills", 200, new Date());
@@ -29,6 +33,6 @@ public class Main {
         budget1.saveToJsonFile(bud1);
 
         Budgeting bud2 = Budgeting.loadFromJsonFile(bud1);
-        System.out.println(bud2);
+        System.out.println("Ez a jó: " + bud2);*/
     }
 }

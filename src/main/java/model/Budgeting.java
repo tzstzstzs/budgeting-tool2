@@ -37,6 +37,12 @@ public class Budgeting {
         mapper1.writeValue(file, this);
     }
 
+/*    public void saveAs(String filePath) throws IOException {
+        Files.writeString(Path.of(filePath), content.get());
+        this.filePath.set(filePath);
+        modified.set(false);
+    }*/
+
     public static Budgeting loadFromJsonFile(File file) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(file, Budgeting.class);

@@ -1,37 +1,37 @@
 {
   "name" : "Zsolt",
   "expenses" : [ {
-    "name" : "bills",
+    "expenseCategory" : "bills",
     "amount" : 200.0,
-    "date" : 1682884295244
+    "date" : 1683060680851
   }, {
-    "name" : "loan",
+    "expenseCategory" : "loan",
     "amount" : 250.0,
-    "date" : 1682884295244
+    "date" : 1683060680851
   }, {
-    "name" : "petrol",
+    "expenseCategory" : "petrol",
     "amount" : 150.0,
-    "date" : 1682884295244
+    "date" : 1683060680851
   }, {
-    "name" : "food",
+    "expenseCategory" : "food",
     "amount" : 500.0,
-    "date" : 1682884295244
+    "date" : 1683060680851
   }, {
-    "name" : "clothes",
+    "expenseCategory" : "clothes",
     "amount" : 100.0,
-    "date" : 1682884295245
+    "date" : 1683060680852
   } ],
   "incomes" : [ {
-    "name" : "salary",
+    "incomeCategory" : "salary",
     "amount" : 2000.0,
-    "date" : 1682884295227
+    "date" : 1683060680851
   }, {
-    "name" : "apartment letting",
+    "incomeCategory" : "apartment letting",
     "amount" : 500.0,
-    "date" : 1682884295227
+    "date" : 1683060680851
   } ],
   "goal" : 10.0,
-  "totalExpenses" : 1200.0,
   "totalIncomes" : 2500.0,
+  "totalExpenses" : 1200.0,
   "remainingAmount" : 1300.0
 }

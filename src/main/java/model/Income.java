@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Income {
-    private String name;
+    private String incomeCategory;
     private double amount;
     Date date;
 }
