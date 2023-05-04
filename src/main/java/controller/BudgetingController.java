@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import lombok.Data;
 import model.Budgeting;
 import model.Expense;
 import model.Income;
@@ -17,7 +19,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+
 public class BudgetingController {
+
+    @FXML
+    private File currentFile;
+
+    public void setCurrentFile(File currentFile) {
+        this.currentFile = currentFile;
+    }
     @FXML
     private TextField incomeCategory;
 
@@ -48,6 +58,9 @@ public class BudgetingController {
     @FXML
     public Label nameOfBudgetOwner;
 
+    public BudgetingController() {
+    }
+
     public Label getNameOfBudgetOwner() {
         return nameOfBudgetOwner;
     }
@@ -77,6 +90,34 @@ public class BudgetingController {
             model.saveToJsonFile(file1);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void save() {
+        if (currentFile != null) {
+            try {
+                model.saveToJsonFile(currentFile);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            saveAs();
+        }
+    }
+
+    public void saveAs() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save budget as...");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("JSON Files", "*.json"));
+        File file = fileChooser.showSaveDialog(nameOfBudgetOwner.getScene().getWindow());
+        if (file != null) {
+            try {
+                model.saveToJsonFile(file);
+                currentFile = file;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

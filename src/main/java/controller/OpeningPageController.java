@@ -19,10 +19,10 @@ import java.io.IOException;
 public class OpeningPageController {
 
     @FXML
-    private AnchorPane root;
+    public AnchorPane root;
 
     @FXML
-    private Button createButton;
+    public Button createButton;
 
     @FXML
     private TextField newBudgetName;
@@ -30,24 +30,15 @@ public class OpeningPageController {
     @FXML
     private TextField newBudgetGoal;
 
-/*    @FXML
-    private void switchToBudgetingPage(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/second.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
-    }*/
-    private void switchToBudgetingPage(ActionEvent event, Budgeting budgetToOpen) {
+    private void switchToBudgetingPage(ActionEvent event, Budgeting budgetToOpen, File selectedFile) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/budgeting.fxml"));
             Parent root = loader.load();
             BudgetingController controller = loader.getController();
             //Budgeting budget = null;
             controller.setModel(budgetToOpen); // pass the budget to the controller
-            controller.nameOfBudgetOwner.setText(budgetToOpen.getName() + "'s budget");
-            controller.remainingAmount.setText(String.valueOf(budgetToOpen.getRemainingAmount()));
-            controller.totalIncome.setText(String.valueOf(budgetToOpen.getTotalIncomes()));
-            controller.totalExpense.setText(String.valueOf(budgetToOpen.getTotalExpenses()));
+            controller.setCurrentFile(selectedFile);
+            setAllLabels(controller, budgetToOpen);
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -57,10 +48,17 @@ public class OpeningPageController {
         }
     }
 
+    private void setAllLabels(BudgetingController controller, Budgeting budgetToOpen){
+        controller.nameOfBudgetOwner.setText(budgetToOpen.getName() + "'s budget");
+        controller.remainingAmount.setText(String.valueOf(budgetToOpen.getRemainingAmount()));
+        controller.totalIncome.setText(String.valueOf(budgetToOpen.getTotalIncomes()));
+        controller.totalExpense.setText(String.valueOf(budgetToOpen.getTotalExpenses()));
+    }
+
     @FXML
     public void createNewBudget(ActionEvent actionEvent)  {
         Budgeting newBudget = new Budgeting(newBudgetName.getText(), Double.parseDouble(newBudgetGoal.getText()));
-        switchToBudgetingPage(actionEvent, newBudget);
+        switchToBudgetingPage(actionEvent, newBudget, null);
     }
 
     public void openBudget(ActionEvent actionEvent) throws IOException {
@@ -73,7 +71,7 @@ public class OpeningPageController {
 
         if (selectedFile != null) {
             Budgeting model = Budgeting.loadFromJsonFile(selectedFile);
-            switchToBudgetingPage(actionEvent, model);
+            switchToBudgetingPage(actionEvent, model, selectedFile);
         }
     }
 }

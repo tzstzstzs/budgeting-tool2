@@ -43,12 +43,13 @@
          <font>
             <Font name="Calibri Bold" size="24.0" />
          </font></Label>
-      <Button layoutX="573.0" layoutY="358.0" mnemonicParsing="false" onAction="#saveBudgetToJsonFile" text="Save" />
+      <Button layoutX="488.0" layoutY="358.0" mnemonicParsing="false" onAction="#save" text="Save" />
       <Label layoutX="473.0" layoutY="421.0" prefHeight="28.0" prefWidth="111.0" text="Remaining Amount" />
       <Label fx:id="remainingAmount" layoutX="584.0" layoutY="421.0" prefHeight="28.0" prefWidth="111.0" />
       <Label layoutX="64.0" layoutY="421.0" prefHeight="28.0" prefWidth="111.0" text="Total income: " />
       <Label fx:id="totalIncome" layoutX="155.0" layoutY="421.0" prefHeight="28.0" prefWidth="111.0" />
       <Label layoutX="291.0" layoutY="421.0" prefHeight="28.0" prefWidth="111.0" text="Total expense: " />
       <Label fx:id="totalExpense" layoutX="382.0" layoutY="421.0" prefHeight="28.0" prefWidth="111.0" />
+      <Button layoutX="564.0" layoutY="358.0" mnemonicParsing="false" onAction="#saveAs" text="saveAs" />
    </children>
 </AnchorPane>
